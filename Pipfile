@@ -5,11 +5,7 @@ name = "pypi"
 
 [packages]
 django = "<1.12"
+python-decouple = "*"
 
 [dev-packages]
 selenium = "<4"
-black = "*"
-bandit = "*"
-
-[requires]
-python_version = "3.6"
