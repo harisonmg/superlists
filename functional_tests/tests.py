@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.test import LiveServerTestCase
 
 from selenium import webdriver
@@ -12,7 +13,9 @@ MAX_WAIT = 10
 class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        self.browser_options = webdriver.firefox.options.Options()
+        self.browser_options.headless = settings.HEADLESS_BROWSER_TESTS
+        self.browser = webdriver.Firefox(options=self.browser_options)
 
     def tearDown(self):
         self.browser.quit()
@@ -86,7 +89,7 @@ class NewVisitorTest(LiveServerTestCase):
         ## We use a new browser session to make sure that no information
         ## of Edith's is coming through from cookies etc 
         self.browser.quit()
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Firefox(options=self.browser_options)
             
         # Francis visits the home page. There is no sign of Edith's list
         self.browser.get(self.live_server_url)
