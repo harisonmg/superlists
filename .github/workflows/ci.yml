@@ -34,6 +34,3 @@ jobs:
         # Django Core
         ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
         DJANGO_SECRET_KEY: ${{secrets.DJANGO_SECRET_KEY}}
-
-        # Running tests
-        HEADLESS_BROWSER_TESTS: ${{secrets.HEADLESS_BROWSER_TESTS}}
